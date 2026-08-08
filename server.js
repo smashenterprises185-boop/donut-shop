@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files (HTML, CSS, JS, Images)
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname)));
 
 // ==========================================
 // FAST GMAIL SMTP TRANSPORTER
@@ -34,15 +34,17 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Verify SMTP connection on startup
-transporter.verify((error, success) => {
-  if (error) {
-    console.error('❌ SMTP Connection Error:', error.message);
-    console.error('⚠️ Ensure EMAIL_USER and EMAIL_PASS are correctly set in your environment variables');
-  } else {
-    console.log('✅ SMTP Server connected successfully');
-  }
-});
+// Verify SMTP connection locally only (prevents Vercel serverless cold-start delays)
+if (process.env.NODE_ENV !== 'production') {
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error('❌ SMTP Connection Error:', error.message);
+      console.error('⚠️ Ensure EMAIL_USER and EMAIL_PASS are correctly set in your environment variables');
+    } else {
+      console.log('✅ SMTP Server connected successfully');
+    }
+  });
+}
 
 // ==========================================
 // API ROUTES (ASYNC/AWAIT FOR VERCEL SERVERLESS)
@@ -89,7 +91,6 @@ app.post('/api/contact', async (req, res) => {
       `
     };
 
-    // Await email delivery so serverless execution doesn't cut off early
     const info = await transporter.sendMail(mailOptions);
     console.log('✅ Contact email sent:', info.messageId);
 
@@ -183,7 +184,6 @@ const handleOrderSubmission = async (req, res) => {
       `
     };
 
-    // Await email delivery so serverless execution doesn't cut off early
     const info = await transporter.sendMail(orderMailOptions);
     console.log('✅ Order email sent:', info.messageId);
 
