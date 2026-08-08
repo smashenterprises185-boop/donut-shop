@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Donuts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page">
+
+  <!-- CURVED WAVE BACKGROUND SHAPE -->
+  <div class="bg-shape"></div>
+
+  <!-- HEADER NAVIGATION -->
+  <header>
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="shop.html">Shop</a>
+        <a href="javascript:void(0)" onclick="openOverlay('contact-overlay')">Contact us</a>
+      </div>
+      <div class="nav-icons">
+        <a href="javascript:void(0)" onclick="showCart()" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </a>
+        <a href="javascript:void(0)" onclick="openOverlay('about-overlay')" aria-label="Profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN MENU CONTENT -->
+  <main>
+    <div class="page-header">
+      <h1>Our Menu</h1>
+      <p>Handcrafted with love, glazed to perfection. Explore our delicious selection!</p>
+    </div>
+    <div class="menu-grid">
+      
+      <div class="menu-card">
+        <img src="yellowdonut.png" alt="Classic Glazed">
+        <div class="menu-card-info">
+          <h3>Classic Glazed</h3>
+          <p>Our signature hand-dipped glazed donut with a perfect sweet coating and soft, fluffy interior.</p>
+          <div class="card-action-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div class="menu-card-price">$3.50</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="bluedonut.png" alt="Berry Blue">
+        <div class="menu-card-info">
+          <h3>Berry Blue</h3>
+          <p>Bursting with blueberry flavor and topped with colorful rainbow sprinkles for a fun twist.</p>
+          <div class="card-action-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div class="menu-card-price">$4.00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="browndonut.png" alt="Choco Fudge">
+        <div class="menu-card-info">
+          <h3>Choco Fudge</h3>
+          <p>Rich chocolate frosting with rainbow sprinkles for the ultimate chocolate lover's treat.</p>
+          <div class="card-action-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div class="menu-card-price">$4.50</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="pinkdonut.png" alt="Pink Velvet">
+        <div class="menu-card-info">
+          <h3>Pink Velvet</h3>
+          <p>Soft pink strawberry frosting with a delicate drizzle finish. Sweet, smooth, and irresistible.</p>
+          <div class="card-action-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div class="menu-card-price">$4.00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="yellowdonut.png" class="lemon-zest-image" alt="Lemon Zest">
+        <div class="menu-card-info">
+          <h3>Lemon Zest</h3>
+          <p>Tangy lemon glaze with a sprinkle of zest. A refreshing citrus choice for sunny days.</p>
+          <div class="card-action-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div class="menu-card-price">$3.75</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="browndonut.png" class="caramel-crunch-image" alt="Caramel Crunch">
+        <div class="menu-card-info">
+          <h3>Caramel Crunch</h3>
+          <p>Caramel drizzle topped with crunchy nuts and a pinch of sea salt. Sweet and savory harmony.</p>
+          <div class="card-action-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div class="menu-card-price">$4.25</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- OVERLAY CONTAINER (MODAL VIEWS) -->
+  <div id="modal-backdrop" class="modal-backdrop" onclick="closeOverlays()">
+    
+    <!-- CONTACT OVERLAY -->
+    <div id="contact-overlay" class="overlay-card" onclick="event.stopPropagation()">
+      <div class="contact-container">
+        <h1>Contact us</h1>
+        <form class="contact-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="first-name">First name*</label>
+              <input type="text" id="first-name" placeholder="First name" required>
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last name*</label>
+              <input type="text" id="last-name" placeholder="Last name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address*</label>
+              <input type="text" id="address" placeholder="Address" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number*</label>
+              <input type="tel" id="phone" placeholder="Phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="postal">Postal code*</label>
+              <input type="text" id="postal" placeholder="Postal code (optional)">
+            </div>
+          </div>
+          <p class="policy-note">you agree to our friendly <a href="javascript:void(0)" onclick="openOverlay('privacy-overlay')">privacy policy</a></p>
+          <button type="submit" class="send-btn">Send message</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ABOUT OVERLAY -->
+    <div id="about-overlay" class="overlay-card" onclick="event.stopPropagation()">
+      <div class="about-container">
+        <h1>About us</h1>
+        <p>At Donuts, every donut is crafted fresh with premium ingredients and a passion for great taste. From classic favorites to unique flavors, we're dedicated to creating sweet moments you'll want to enjoy again and again. Freshly made, warmly served, and always delicious.</p>
+        <p class="policy-note">you agree to our friendly <a href="javascript:void(0)" onclick="openOverlay('privacy-overlay')">privacy policy</a></p>
+      </div>
+    </div>
+
+    <!-- PRIVACY POLICY OVERLAY -->
+    <div id="privacy-overlay" class="overlay-card" onclick="event.stopPropagation()">
+      <div class="privacy-container" style="max-height: 80vh; overflow-y: auto; padding: 20px; text-align: left;">
+        <h1 style="text-align: center; margin-bottom: 15px;">Privacy Policy</h1>
+        
+        <p style="font-size: 14px; line-height: 1.6; color: #eee; margin-bottom: 15px;">
+          At <strong>Donuts</strong>, we value your privacy and are committed to protecting the personal information you share with us when ordering sweet treats or reaching out through our site.
+        </p>
+
+        <h3 style="font-size: 16px; margin-top: 15px; color: #fff;">1. Information We Collect</h3>
+        <ul style="font-size: 13px; line-height: 1.6; color: #ddd; padding-left: 20px;">
+          <li><strong>Contact Inquiries:</strong> Your name, email address, phone number, and mailing address when submitting our contact form.</li>
+          <li><strong>Orders:</strong> Delivery address, phone number, name, selected items, and chosen payment method when placing an order.</li>
+        </ul>
+
+        <h3 style="font-size: 16px; margin-top: 15px; color: #fff;">2. How We Use Your Information</h3>
+        <ul style="font-size: 13px; line-height: 1.6; color: #ddd; padding-left: 20px;">
+          <li>To process, fulfill, and deliver your donut orders to your door.</li>
+          <li>To send order confirmation notifications via email.</li>
+          <li>To respond to support inquiries submitted via the contact form.</li>
+        </ul>
+
+        <h3 style="font-size: 16px; margin-top: 15px; color: #fff;">3. Data Protection & Sharing</h3>
+        <p style="font-size: 13px; line-height: 1.6; color: #ddd;">
+          We do not sell, rent, or trade your personal information to third parties. Customer details are strictly used to complete transactions and manage local cart preferences.
+        </p>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="send-btn" onclick="closeOverlays()" style="padding: 8px 20px; cursor: pointer;">Close</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CART OVERLAY -->
+  <div id="cart-overlay" class="cart-overlay" onclick="closeCart()">
+    <div class="cart-panel" onclick="event.stopPropagation()">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="cart-close" onclick="closeCart()">&times;</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <div class="cart-empty">Your cart is empty.<br>Add some delicious donuts!</div>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total-price">$0.00</span>
+        </div>
+        <button class="checkout-btn" onclick="openCheckoutModal()">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL CONTAINER -->
+  <div id="checkoutModal" class="checkout-modal-overlay">
+    <div class="checkout-modal-card">
+      
+      <!-- Modal Header -->
+      <div class="checkout-header">
+        <h2>Complete Your Order 🍩</h2>
+        <button class="close-modal-btn" onclick="closeCheckoutModal()">&times;</button>
+      </div>
+
+      <div class="checkout-body">
+        <!-- Left side: Order Summary -->
+        <div class="checkout-summary">
+          <h3>Order Summary</h3>
+          <div id="checkoutSummaryList" class="checkout-summary-list">
+            <!-- Dynamic cart items render here -->
+          </div>
+          
+          <div class="checkout-total-row">
+            <span>Total Amount</span>
+            <strong id="checkoutGrandTotal">$0.00</strong>
+          </div>
+        </div>
+
+        <!-- Right side: Customer & Payment Form -->
+        <form id="checkoutForm" class="checkout-form" onsubmit="handlePlaceOrder(event)">
+          <h3>Delivery Details</h3>
+
+          <div class="input-group">
+            <label for="custName">Full Name</label>
+            <input type="text" id="custName" placeholder="John Doe" required />
+          </div>
+
+          <div class="input-group">
+            <label for="custPhone">Phone Number</label>
+            <input type="tel" id="custPhone" placeholder="+1 (555) 000-0000" required />
+          </div>
+
+          <div class="input-group">
+            <label for="custAddress">Delivery Address</label>
+            <textarea id="custAddress" rows="2" placeholder="123 Sweet Street, Apt 4B" required></textarea>
+          </div>
+
+          <h3>Payment Method</h3>
+          <div class="payment-options">
+            <label class="payment-radio">
+              <input type="radio" name="paymentMethod" value="Cash on Delivery" checked>
+              <span>💵 Cash on Delivery</span>
+            </label>
+            <label class="payment-radio">
+              <input type="radio" name="paymentMethod" value="Credit/Debit Card">
+              <span>💳 Credit / Debit Card</span>
+            </label>
+          </div>
+
+          <button type="submit" class="place-order-btn">Confirm & Place Order</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       1. THEME SWITCHER
+       ========================================================================== */
+    const themeColors = {
+      'Classic Glazed': { bg: '#e5c227', shape: '#c4b86a' }, // Yellow
+      'Berry Blue':     { bg: '#54a3b5', shape: '#3e7f8e' }, // Blue
+      'Choco Fudge':    { bg: '#5c3d2e', shape: '#422a1f' }, // Brown
+      'Pink Velvet':    { bg: '#d66b88', shape: '#a84c64' }, // Pink
+      'Lemon Zest':     { bg: '#83ad32', shape: '#5d7d20' }, // Green/Yellow
+      'Caramel Crunch': { bg: '#8a5a36', shape: '#613e24' }  // Dark Caramel
+    };
+
+    function setTheme(donutName) {
+      const theme = themeColors[donutName];
+      if (!theme) return;
+
+      let themeName = 'yellow';
+      if (donutName === 'Berry Blue') themeName = 'blue';
+      if (donutName === 'Choco Fudge' || donutName === 'Caramel Crunch') themeName = 'brown';
+      if (donutName === 'Pink Velvet') themeName = 'pink';
+      document.documentElement.setAttribute('data-theme', themeName);
+      localStorage.setItem('selectedDonutTheme', themeName);
+      
+      document.body.style.backgroundColor = theme.bg;
+      const bgShape = document.querySelector('.bg-shape');
+      if (bgShape) {
+        bgShape.style.backgroundColor = theme.shape;
+      }
+    }
+
+    /* ==========================================================================
+       2. MODAL & OVERLAY CONTROLLERS
+       ========================================================================== */
+    function openOverlay(overlayId) {
+      const backdrop = document.getElementById('modal-backdrop');
+      const overlays = document.querySelectorAll('.overlay-card');
+      
+      overlays.forEach(card => {
+        card.classList.remove('active');
+        card.style.display = 'none';
+      });
+
+      if (backdrop) {
+        backdrop.classList.add('active');
+        backdrop.style.display = 'flex';
+      }
+      
+      const target = document.getElementById(overlayId);
+      if (target) {
+        target.classList.add('active');
+        target.style.display = 'block';
+      }
+    }
+
+    function closeOverlays() {
+      const backdrop = document.getElementById('modal-backdrop');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+        backdrop.style.display = 'none';
+      }
+      document.querySelectorAll('.overlay-card').forEach(card => {
+        card.classList.remove('active');
+        card.style.display = 'none';
+      });
+    }
+
+    /* ==========================================================================
+       3. CART FUNCTIONS
+       ========================================================================== */
+    let cart = JSON.parse(localStorage.getItem('donutCart')) || [];
+
+    function saveCart() {
+      localStorage.setItem('donutCart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+      const badges = document.querySelectorAll('.cart-count');
+      badges.forEach(badge => {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+      });
+    }
+
+    function addToCart(id, name, price, image) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty = (existing.qty || 1) + 1;
+      } else {
+        cart.push({ id, name, price, image, qty: 1 });
+      }
+      saveCart();
+      showCart();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      saveCart();
+      renderCart();
+    }
+
+    function updateQty(id, delta) {
+      const item = cart.find(item => item.id === id);
+      if (item) {
+        item.qty = (item.qty || 1) + delta;
+        if (item.qty <= 0) {
+          removeFromCart(id);
+        } else {
+          saveCart();
+          renderCart();
+        }
+      }
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total-price');
+      if (!container) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add some delicious donuts!</div>';
+        if (totalEl) totalEl.textContent = '$0.00';
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        const itemQty = item.qty || item.quantity || 1;
+        total += item.price * itemQty;
+        return `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-info">
+              <h4>${item.name}</h4>
+              <p>$${Number(item.price).toFixed(2)}</p>
+            </div>
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="updateQty('${item.id}', -1)">−</button>
+              <span>${itemQty}</span>
+              <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">×</button>
+          </div>`;
+      }).join('');
+
+      if (totalEl) totalEl.textContent = '$' + total.toFixed(2);
+    }
+
+    function showCart() {
+      const overlay = document.getElementById('cart-overlay');
+      if (overlay) {
+        overlay.classList.add('active');
+        overlay.style.display = 'flex';
+        renderCart();
+      }
+    }
+
+    function closeCart() {
+      const overlay = document.getElementById('cart-overlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+        overlay.style.display = 'none';
+      }
+    }
+
+    /* ==========================================================================
+       4. CHECKOUT MODAL & ORDER HANDLING LOGIC
+       ========================================================================== */
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        closeCart();
+        alert("Your cart is empty! Please add some donuts before checking out.");
+        return;
+      }
+
+      const summaryList = document.getElementById('checkoutSummaryList');
+      const grandTotalEl = document.getElementById('checkoutGrandTotal');
+      
+      if (summaryList) {
+        summaryList.innerHTML = '';
+        let grandTotal = 0;
+
+        cart.forEach(item => {
+          const itemPrice = parseFloat(item.price) || 0;
+          const itemQty = parseInt(item.qty || item.quantity, 10) || 1;
+          const itemTotal = itemPrice * itemQty;
+          grandTotal += itemTotal;
+
+          summaryList.innerHTML += `
+            <div class="summary-item" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <div class="summary-item-details">
+                <h4>${item.name}</h4>
+                <p>Qty: ${itemQty} × $${itemPrice.toFixed(2)}</p>
+              </div>
+              <span class="summary-item-price">$${itemTotal.toFixed(2)}</span>
+            </div>
+          `;
+        });
+
+        if (grandTotalEl) grandTotalEl.textContent = `$${grandTotal.toFixed(2)}`;
+      }
+
+      closeCart();
+
+      const checkoutModal = document.getElementById('checkoutModal');
+      if (checkoutModal) {
+        checkoutModal.classList.add('active');
+        checkoutModal.style.display = 'flex';
+      }
+    }
+
+    function closeCheckoutModal() {
+      const checkoutModal = document.getElementById('checkoutModal');
+      if (checkoutModal) {
+        checkoutModal.classList.remove('active');
+        checkoutModal.style.display = 'none';
+      }
+    }
+
+    async function handlePlaceOrder(e) {
+      e.preventDefault();
+
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      const submitBtn = document.querySelector('.place-order-btn');
+      if (submitBtn) {
+        submitBtn.textContent = 'Processing Order...';
+        submitBtn.disabled = true;
+      }
+
+      const orderPayload = {
+        customerName: document.getElementById('custName')?.value || '',
+        phone: document.getElementById('custPhone')?.value || '',
+        address: document.getElementById('custAddress')?.value || '',
+        paymentMethod: document.querySelector('input[name="paymentMethod"]:checked')?.value || 'Cash on Delivery',
+        items: cart,
+        orderDate: new Date().toISOString()
+      };
+
+      try {
+        const response = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderPayload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success !== false) {
+          alert('🎉 Thank you! Your order has been placed successfully.');
+          cart = [];
+          saveCart();
+          closeCheckoutModal();
+          renderCart();
+        } else {
+          alert('Error placing order: ' + (result.message || 'Please try again.'));
+        }
+      } catch (error) {
+        console.error('Error submitting order:', error);
+        alert('Failed to connect to the server. Please check your network connection.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = 'Confirm & Place Order';
+          submitBtn.disabled = false;
+        }
+      }
+    }
+
+    /* ==========================================================================
+       5. INITIALIZATION & CONTACT FORM LISTENERS
+       ========================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+
+      const savedTheme = localStorage.getItem('selectedDonutTheme') || 'yellow';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      // Add click listeners to menu cards for theme selection
+      const cards = document.querySelectorAll('.menu-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => c.classList.remove('active-theme-card'));
+          card.classList.add('active-theme-card');
+          const title = card.querySelector('h3').textContent.trim();
+          setTheme(title);
+        });
+      });
+
+      const savedCard = [...cards].find(card => {
+        const image = card.querySelector('img')?.src || '';
+        return image.includes(`${savedTheme}donut.png`) ||
+          (savedTheme === 'brown' && image.includes('browndonut.png'));
+      });
+      if (savedCard) {
+        savedCard.classList.add('active-theme-card');
+        setTheme(savedCard.querySelector('h3').textContent.trim());
+      }
+
+      // Contact Form Submission Handler
+      const contactForm = document.querySelector('.contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function (e) {
+          e.preventDefault();
+
+          const formData = {
+            firstName: document.getElementById('first-name').value,
+            lastName: document.getElementById('last-name').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('address').value,
+            phone: document.getElementById('phone').value,
+            postalCode: document.getElementById('postal').value
+          };
+
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+          }
+
+          try {
+            const response = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+              alert('Thank you! Your message has been sent.');
+              contactForm.reset();
+              closeOverlays();
+            } else {
+              alert('Error sending message: ' + result.message);
+            }
+          } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Failed to connect to the server.');
+          } finally {
+            if (submitBtn) {
+              submitBtn.textContent = 'Send message';
+              submitBtn.disabled = false;
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

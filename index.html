@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donuts Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="body-bg" class="home-page">
+
+  <!-- CURVED WAVE BACKGROUND SHAPE -->
+  <div class="bg-shape"></div>
+
+  <!-- FLOATING DECORATIVE CORNER DONUTS -->
+  <img id="top-donut" src="pinkdonut.png" class="decor-donut top-left-donut" alt="Top Left Donut">
+  <img id="bottom-donut" src="bluedonut.png" class="decor-donut bottom-left-donut" alt="Bottom Left Donut">
+
+  <!-- HEADER NAVIGATION -->
+  <header>
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="shop.html">Shop</a>
+        <a href="javascript:void(0)" onclick="openOverlay('contact-overlay')">Contact us</a>
+      </div>
+      <div class="nav-icons">
+        <a href="javascript:void(0)" onclick="showCart(); return false;" aria-label="Cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+        </a>
+        <a href="javascript:void(0)" onclick="openOverlay('about-overlay')" aria-label="Profile">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN HERO SECTION -->
+  <main>
+    <section class="hero-section">
+      <!-- Main Display Donut -->
+      <div class="hero-left">
+        <img id="main-donut-img" class="main-donut-yellow" src="yellowdonut.png" alt="Main Donut Display">
+      </div>
+
+      <!-- Donut Text & Thumbnail Options -->
+      <div class="hero-right">
+        <h1>Donuts</h1>
+        <p>Every donut is handcrafted to deliver the perfect balance of softness, sweetness, and flavor.</p>
+
+        <!-- Donut Selector Thumbnails -->
+        <div class="donut-options">
+          <a href="javascript:void(0)" class="thumb-btn active" onclick="changeTheme('#e5c227', '#c4b86a', 'yellowdonut.png', 'pinkdonut.png', 'bluedonut.png', this)">
+            <img src="yellowdonut.png" alt="Yellow Donut">
+          </a>
+          <a href="javascript:void(0)" class="thumb-btn" onclick="changeTheme('#1a8c97', '#136c75', 'bluedonut.png', 'yellowdonut.png', 'pinkdonut.png', this)">
+            <img src="bluedonut.png" alt="Blue Donut">
+          </a>
+          <a href="javascript:void(0)" class="thumb-btn" onclick="changeTheme('#4a3728', '#382a1e', 'browndonut.png', 'bluedonut.png', 'yellowdonut.png', this)">
+            <img src="browndonut.png" alt="Brown Donut">
+          </a>
+          <a href="javascript:void(0)" class="thumb-btn" onclick="changeTheme('#7b225c', '#5e1a47', 'pinkdonut.png', 'yellowdonut.png', 'bluedonut.png', this)">
+            <img class="pink-thumb-image" src="pinkdonut.png" alt="Pink Donut">
+          </a>
+          
+          <!-- Moving Slider Indicator -->
+          <div class="slider-indicator"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- OVERLAY CONTAINER (MODAL VIEWS) -->
+  <div id="modal-backdrop" class="modal-backdrop" onclick="closeOverlays()">
+    
+    <!-- CONTACT OVERLAY -->
+    <div id="contact-overlay" class="overlay-card" onclick="event.stopPropagation()">
+      <div class="contact-container">
+        <h1>Contact us</h1>
+        <form class="contact-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="first-name">First name*</label>
+              <input type="text" id="first-name" placeholder="First name" required>
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last name*</label>
+              <input type="text" id="last-name" placeholder="Last name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address*</label>
+              <input type="text" id="address" placeholder="Address" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number*</label>
+              <input type="tel" id="phone" placeholder="Phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="postal">Postal code*</label>
+              <input type="text" id="postal" placeholder="Postal code (optional)">
+            </div>
+          </div>
+          <p class="policy-note">you agree to our friendly <a href="javascript:void(0)" onclick="openOverlay('privacy-overlay')">privacy policy</a></p>
+          <button type="submit" class="send-btn">Send message</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ABOUT OVERLAY -->
+    <div id="about-overlay" class="overlay-card" onclick="event.stopPropagation()">
+      <div class="about-container">
+        <h1>About us</h1>
+        <p>At Donuts, every donut is crafted fresh with premium ingredients and a passion for great taste. From classic favorites to unique flavors, we're dedicated to creating sweet moments you'll want to enjoy again and again. Freshly made, warmly served, and always delicious.</p>
+        <p class="policy-note">you agree to our friendly <a href="javascript:void(0)" onclick="openOverlay('privacy-overlay')">privacy policy</a></p>
+      </div>
+    </div>
+
+    <!-- PRIVACY POLICY OVERLAY -->
+    <div id="privacy-overlay" class="overlay-card" onclick="event.stopPropagation()">
+      <div class="privacy-container" style="max-height: 80vh; overflow-y: auto; padding: 20px; text-align: left;">
+        <h1 style="text-align: center; margin-bottom: 15px;">Privacy Policy</h1>
+        
+        <p style="font-size: 14px; line-height: 1.6; color: #eee; margin-bottom: 15px;">
+          At <strong>Donuts</strong>, we value your privacy and are committed to protecting the personal information you share with us when ordering sweet treats or reaching out through our site.
+        </p>
+
+        <h3 style="font-size: 16px; margin-top: 15px; color: #fff;">1. Information We Collect</h3>
+        <ul style="font-size: 13px; line-height: 1.6; color: #ddd; padding-left: 20px;">
+          <li><strong>Contact Inquiries:</strong> Your name, email address, phone number, and mailing address when submitting our contact form.</li>
+          <li><strong>Orders:</strong> Delivery address, phone number, name, selected items, and chosen payment method when placing an order.</li>
+        </ul>
+
+        <h3 style="font-size: 16px; margin-top: 15px; color: #fff;">2. How We Use Your Information</h3>
+        <ul style="font-size: 13px; line-height: 1.6; color: #ddd; padding-left: 20px;">
+          <li>To process, fulfill, and deliver your donut orders to your door.</li>
+          <li>To send order confirmation notifications via email.</li>
+          <li>To respond to support inquiries submitted via the contact form.</li>
+        </ul>
+
+        <h3 style="font-size: 16px; margin-top: 15px; color: #fff;">3. Data Protection & Sharing</h3>
+        <p style="font-size: 13px; line-height: 1.6; color: #ddd;">
+          We do not sell, rent, or trade your personal information to third parties. Customer details are strictly used to complete transactions and manage local cart preferences.
+        </p>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="send-btn" onclick="closeOverlays()" style="padding: 8px 20px; cursor: pointer;">Close</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CART OVERLAY -->
+  <div id="cart-overlay" class="cart-overlay" onclick="closeCart()">
+    <div class="cart-panel" onclick="event.stopPropagation()">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="cart-close" onclick="closeCart()">&times;</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <div class="cart-empty">Your cart is empty.<br>Add some delicious donuts!</div>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total-price">$0.00</span>
+        </div>
+        <button class="checkout-btn" onclick="openCheckoutModal()">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal Container -->
+  <div id="checkoutModal" class="checkout-modal-overlay">
+    <div class="checkout-modal-card">
+      
+      <!-- Modal Header -->
+      <div class="checkout-header">
+        <h2>Complete Your Order 🍩</h2>
+        <button class="close-modal-btn" onclick="closeCheckoutModal()">&times;</button>
+      </div>
+
+      <div class="checkout-body">
+        <!-- Left side: Order Summary -->
+        <div class="checkout-summary">
+          <h3>Order Summary</h3>
+          <div id="checkoutSummaryList" class="checkout-summary-list">
+            <!-- Dynamic cart items render here -->
+          </div>
+          
+          <div class="checkout-total-row">
+            <span>Total Amount</span>
+            <strong id="checkoutGrandTotal">$0.00</strong>
+          </div>
+        </div>
+
+        <!-- Right side: Customer & Payment Form -->
+        <form id="checkoutForm" class="checkout-form" onsubmit="handlePlaceOrder(event)">
+          <h3>Delivery Details</h3>
+
+          <div class="input-group">
+            <label for="custName">Full Name</label>
+            <input type="text" id="custName" placeholder="John Doe" required />
+          </div>
+
+          <div class="input-group">
+            <label for="custPhone">Phone Number</label>
+            <input type="tel" id="custPhone" placeholder="+1 (555) 000-0000" required />
+          </div>
+
+          <div class="input-group">
+            <label for="custAddress">Delivery Address</label>
+            <textarea id="custAddress" rows="2" placeholder="123 Sweet Street, Apt 4B" required></textarea>
+          </div>
+
+          <h3>Payment Method</h3>
+          <div class="payment-options">
+            <label class="payment-radio">
+              <input type="radio" name="paymentMethod" value="COD" checked>
+              <span>💵 Cash on Delivery</span>
+            </label>
+            <label class="payment-radio">
+              <input type="radio" name="paymentMethod" value="Card">
+              <span>💳 Credit / Debit Card</span>
+            </label>
+          </div>
+
+          <button type="submit" class="place-order-btn">Confirm & Place Order</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+    /* ==========================================================================
+       1. THEME SWITCHER & SLIDER FUNCTIONS
+       ========================================================================== */
+    function changeTheme(bgColor, shapeColor, mainImage, topImage, bottomImage, element) {
+      let themeName = 'yellow';
+      if (mainImage.includes('blue')) themeName = 'blue';
+      else if (mainImage.includes('pink')) themeName = 'pink';
+      else if (mainImage.includes('brown')) themeName = 'brown';
+
+      document.documentElement.setAttribute('data-theme', themeName);
+      localStorage.setItem('selectedDonutTheme', themeName);
+
+      const bodyBg = document.getElementById('body-bg');
+      if (bodyBg) bodyBg.style.backgroundColor = bgColor;
+
+      const bgShape = document.querySelector('.bg-shape');
+      if (bgShape) bgShape.style.backgroundColor = shapeColor;
+
+      const mainDonut = document.getElementById('main-donut-img');
+      const topDonut = document.getElementById('top-donut');
+      const bottomDonut = document.getElementById('bottom-donut');
+
+      if (mainDonut) {
+        mainDonut.classList.remove('main-donut-yellow', 'main-donut-blue', 'main-donut-pink');
+        if (mainImage === 'yellowdonut.png') mainDonut.classList.add('main-donut-yellow');
+        if (mainImage === 'bluedonut.png') mainDonut.classList.add('main-donut-blue');
+        if (mainImage === 'pinkdonut.png') mainDonut.classList.add('main-donut-pink');
+
+        mainDonut.classList.add('donut-spin-out');
+      }
+      if (topDonut) topDonut.classList.add('floating-slide-out');
+      if (bottomDonut) bottomDonut.classList.add('floating-slide-out');
+
+      setTimeout(() => {
+        if (mainDonut) {
+          mainDonut.src = mainImage;
+          mainDonut.classList.remove('donut-spin-out');
+          mainDonut.classList.add('donut-spin-in');
+        }
+        if (topImage && topDonut) {
+          topDonut.src = topImage;
+          topDonut.classList.remove('floating-slide-out');
+          topDonut.classList.add('floating-slide-in');
+        }
+        if (bottomImage && bottomDonut) {
+          bottomDonut.src = bottomImage;
+          bottomDonut.classList.remove('floating-slide-out');
+          bottomDonut.classList.add('floating-slide-in');
+        }
+      }, 250);
+
+      setTimeout(() => {
+        if (mainDonut) mainDonut.classList.remove('donut-spin-in');
+        if (topDonut) topDonut.classList.remove('floating-slide-in');
+        if (bottomDonut) bottomDonut.classList.remove('floating-slide-in');
+      }, 600);
+
+      document.querySelectorAll('.thumb-btn').forEach(btn => btn.classList.remove('active'));
+      if (element) element.classList.add('active');
+
+      moveSlider(element);
+    }
+
+    function moveSlider(element) {
+      const indicator = document.querySelector('.slider-indicator');
+      const container = document.querySelector('.donut-options');
+      if (!indicator || !element || !container) return;
+      
+      const containerRect = container.getBoundingClientRect();
+      const elementRect = element.getBoundingClientRect();
+      const leftPos = elementRect.left - containerRect.left + (elementRect.width - indicator.offsetWidth) / 2;
+      
+      indicator.style.left = leftPos + 'px';
+    }
+
+    /* ==========================================================================
+       2. MODAL & OVERLAY CONTROLLERS
+       ========================================================================== */
+    function openOverlay(overlayId) {
+      const backdrop = document.getElementById('modal-backdrop');
+      const overlays = document.querySelectorAll('.overlay-card');
+      
+      overlays.forEach(card => card.classList.remove('active'));
+      if (backdrop) backdrop.classList.add('active');
+      
+      const target = document.getElementById(overlayId);
+      if (target) target.classList.add('active');
+    }
+
+    function closeOverlays() {
+      const backdrop = document.getElementById('modal-backdrop');
+      if (backdrop) backdrop.classList.remove('active');
+      document.querySelectorAll('.overlay-card').forEach(card => card.classList.remove('active'));
+    }
+
+    function showCart() {
+      const overlay = document.getElementById('cart-overlay');
+      if (overlay) {
+        renderCart();
+        overlay.classList.add('active');
+      }
+    }
+
+    function closeCart() {
+      const overlay = document.getElementById('cart-overlay');
+      if (overlay) overlay.classList.remove('active');
+    }
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('donutCart')) || [];
+      const container = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total-price');
+      if (!container) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add some delicious donuts!</div>';
+        if (totalEl) totalEl.textContent = '$0.00';
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        const quantity = Number(item.qty) || 1;
+        total += Number(item.price) * quantity;
+        return `<div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p>$${Number(item.price).toFixed(2)}</p>
+          </div>
+          <span>${quantity}</span>
+        </div>`;
+      }).join('');
+
+      if (totalEl) totalEl.textContent = '$' + total.toFixed(2);
+    }
+
+    /* ==========================================================================
+       3. CHECKOUT MODAL & ORDER HANDLING LOGIC
+       ========================================================================== */
+    function openCheckoutModal() {
+      const cart = JSON.parse(localStorage.getItem('donutCart')) || [];
+      
+      if (cart.length === 0) {
+        closeCart();
+        alert("Your cart is empty! Please add some donuts before checking out.");
+        return;
+      }
+
+      const summaryList = document.getElementById('checkoutSummaryList');
+      const grandTotalEl = document.getElementById('checkoutGrandTotal');
+      
+      if (!summaryList) return;
+
+      summaryList.innerHTML = '';
+      let grandTotal = 0;
+
+      cart.forEach(item => {
+        const itemPrice = parseFloat(item.price) || 0;
+        const itemQty = parseInt(item.qty, 10) || 1;
+        const itemTotal = itemPrice * itemQty;
+        grandTotal += itemTotal;
+
+        summaryList.innerHTML += `
+          <div class="summary-item">
+            <img src="${item.image || 'pinkdonut.png'}" alt="${item.name}">
+            <div class="summary-item-details">
+              <h4>${item.name}</h4>
+              <p>Qty: ${itemQty} × $${itemPrice.toFixed(2)}</p>
+            </div>
+            <span class="summary-item-price">$${itemTotal.toFixed(2)}</span>
+          </div>
+        `;
+      });
+
+      if (grandTotalEl) {
+        grandTotalEl.textContent = `$${grandTotal.toFixed(2)}`;
+      }
+
+      const cartOverlay = document.querySelector('.cart-overlay');
+      if (cartOverlay) cartOverlay.classList.remove('active');
+
+      const checkoutModal = document.getElementById('checkoutModal');
+      if (checkoutModal) checkoutModal.classList.add('active');
+    }
+
+    function closeCheckoutModal() {
+      const checkoutModal = document.getElementById('checkoutModal');
+      if (checkoutModal) checkoutModal.classList.remove('active');
+    }
+
+    async function handlePlaceOrder(e) {
+      e.preventDefault();
+
+      const cart = JSON.parse(localStorage.getItem('donutCart')) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      const submitBtn = document.querySelector('.place-order-btn');
+      if (submitBtn) {
+        submitBtn.textContent = 'Processing Order...';
+        submitBtn.disabled = true;
+      }
+
+      const orderPayload = {
+        customerName: document.getElementById('custName')?.value || '',
+        phone: document.getElementById('custPhone')?.value || '',
+        address: document.getElementById('custAddress')?.value || '',
+        paymentMethod: document.querySelector('input[name="paymentMethod"]:checked')?.value || 'COD',
+        items: cart,
+        orderDate: new Date().toISOString()
+      };
+
+      try {
+        const response = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderPayload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success !== false) {
+          alert('🎉 Thank you! Your order has been placed successfully.');
+          localStorage.removeItem('donutCart');
+          closeCheckoutModal();
+          window.location.reload(); 
+        } else {
+          alert('Error placing order: ' + (result.message || 'Please try again.'));
+        }
+      } catch (error) {
+        console.error('Error submitting order:', error);
+        alert('Failed to submit order. Please check your network connection and try again.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = 'Confirm & Place Order';
+          submitBtn.disabled = false;
+        }
+      }
+    }
+
+    /* ==========================================================================
+       4. INITIALIZATION & EVENT LISTENERS
+       ========================================================================== */
+    window.addEventListener('load', () => {
+      const activeThumb = document.querySelector('.thumb-btn.active');
+      if (activeThumb) moveSlider(activeThumb);
+    });
+
+    window.addEventListener('resize', () => {
+      const activeThumb = document.querySelector('.thumb-btn.active');
+      if (activeThumb) moveSlider(activeThumb);
+    });
+
+    // Contact Form Handler
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = {
+          firstName: document.getElementById('first-name').value,
+          lastName: document.getElementById('last-name').value,
+          email: document.getElementById('email').value,
+          address: document.getElementById('address').value,
+          phone: document.getElementById('phone').value,
+          postalCode: document.getElementById('postal').value
+        };
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.textContent = 'Sending...';
+          submitBtn.disabled = true;
+        }
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            alert('Thank you! Your message has been sent.');
+            contactForm.reset();
+            closeOverlays();
+          } else {
+            alert('Error sending message: ' + result.message);
+          }
+        } catch (error) {
+          console.error('Error submitting form:', error);
+          alert('Failed to connect to the server.');
+        } finally {
+          if (submitBtn) {
+            submitBtn.textContent = 'Send message';
+            submitBtn.disabled = false;
+          }
+        }
+      });
+    }
+</script>
+</body>
+</html>
