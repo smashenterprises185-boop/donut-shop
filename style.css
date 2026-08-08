@@ -1409,3 +1409,38 @@ p {
 .shop-page .menu-card.active-theme-card {
   background: color-mix(in srgb, var(--bg-shape) 94%, transparent);
 }
+/* ==========================================
+   MOBILE RESPONSIVENESS FIXES
+   ========================================== */
+@media screen and (max-width: 768px) {
+  /* Make the header stack vertically instead of overlapping */
+  header, .navbar, nav {
+    flex-direction: column !important;
+    position: relative !important;
+    align-items: center !important;
+    padding: 10px !important;
+    background-color: #fdfbf7; /* Adjust to match your background color */
+    z-index: 100;
+  }
+
+  /* Space out navigation links so they aren't cramped */
+  nav a, .nav-links a {
+    display: inline-block;
+    margin: 5px 10px;
+    font-size: 16px;
+  }
+
+  /* Prevent hero images from bleeding into text and navigation */
+  .hero-img, .donut-top, img {
+    max-width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  /* Add spacing for body content so it sits nicely below the header */
+  body {
+    padding-top: 20px;
+  }
+}
