@@ -1413,34 +1413,97 @@ p {
    MOBILE RESPONSIVENESS FIXES
    ========================================== */
 @media screen and (max-width: 768px) {
-  /* Make the header stack vertically instead of overlapping */
-  header, .navbar, nav {
-    flex-direction: column !important;
-    position: relative !important;
-    align-items: center !important;
-    padding: 10px !important;
-    background-color: #fdfbf7; /* Adjust to match your background color */
+  header {
+    padding: 12px 16px;
+    position: relative;
     z-index: 100;
   }
 
-  /* Space out navigation links so they aren't cramped */
-  nav a, .nav-links a {
-    display: inline-block;
-    margin: 5px 10px;
-    font-size: 16px;
+  .nav-container {
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
   }
 
-  /* Prevent hero images from bleeding into text and navigation */
-  .hero-img, .donut-top, img {
-    max-width: 100% !important;
-    height: auto !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
+  .nav-links {
+    gap: 6px;
+    justify-content: center;
+    flex: 1;
   }
 
-  /* Add spacing for body content so it sits nicely below the header */
-  body {
-    padding-top: 20px;
+  .nav-links a {
+    font-size: 12px;
+    white-space: nowrap;
+    padding: 4px 2px;
+  }
+
+  .nav-icons {
+    position: static;
+    gap: 8px;
+    margin-left: 6px;
+  }
+
+  /* FIX: Stack hero vertically instead of side-by-side */
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-left {
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .hero-right {
+    align-items: center;
+    padding-top: 0;
+  }
+
+  /* FIX: Smaller donut image so it doesn't overflow */
+  #main-donut-img {
+    width: 140px;
+    height: 140px;
+    left: auto;
+    position: relative;
+  }
+
+  .hero-right h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .hero-right p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  /* FIX: Better spacing for thumbnail options */
+  .donut-options {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .thumb-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .thumb-btn img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .slider-indicator {
+    width: 24px;
+    height: 5px;
   }
 }
