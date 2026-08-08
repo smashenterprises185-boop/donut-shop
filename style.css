@@ -1410,86 +1410,203 @@ p {
   background: color-mix(in srgb, var(--bg-shape) 94%, transparent);
 }
 /* ==========================================
-   MOBILE RESPONSIVENESS FIXES
+   MOBILE RESPONSIVENESS FIX
    ========================================== */
+
 @media screen and (max-width: 768px) {
+
+  /* ---------- HEADER / NAVIGATION ---------- */
+
   header {
-    padding: 12px 16px;
-    position: relative;
-    z-index: 100;
+    padding: 12px 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .nav-container {
-    justify-content: space-between;
     width: 100%;
+    display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .nav-links {
-    gap: 6px;
-    justify-content: center;
-    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0;
+    flex: none;
   }
 
   .nav-links a {
-    font-size: 12px;
+    font-size: 13px;
     white-space: nowrap;
-    padding: 4px 2px;
+    text-decoration: none;
+    padding: 5px 6px;
   }
 
+  /* Hide extra icons if they are causing overflow */
   .nav-icons {
-    position: static;
-    gap: 8px;
-    margin-left: 6px;
+    display: none;
   }
 
-  /* FIX: Stack hero vertically instead of side-by-side */
+
+  /* ---------- HERO SECTION ---------- */
+
   .hero-section {
+    width: 100%;
+    min-height: auto;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 20px 16px;
+
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .hero-left,
   .hero-right {
     width: 100%;
-    text-align: center;
+    box-sizing: border-box;
   }
+
+
+  /* ---------- DONUT / IMAGE AREA ---------- */
 
   .hero-left {
+    display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    justify-content: center;
+
+    width: 100%;
+    position: relative;
+
+    padding: 20px 0 10px;
   }
+
+  #main-donut-img {
+    width: 250px;
+    height: 250px;
+
+    max-width: 75vw;
+    max-height: 75vw;
+
+    position: relative;
+    left: auto;
+    top: auto;
+
+    object-fit: contain;
+  }
+
+
+  /* ---------- HERO CONTENT ---------- */
 
   .hero-right {
-    align-items: center;
-    padding-top: 0;
-  }
+    width: 100%;
+    padding: 15px 25px 30px;
 
-  /* FIX: Smaller donut image so it doesn't overflow */
-  #main-donut-img {
-    width: 140px;
-    height: 140px;
-    left: auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+    box-sizing: border-box;
   }
 
   .hero-right h1 {
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 0 0 10px;
   }
 
   .hero-right p {
+    max-width: 340px;
+
     font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 18px;
+    line-height: 19px;
+
+    margin: 0 auto 18px;
   }
 
-  /* FIX: Better spacing for thumbnail options */
+
+  /* ---------- DONUT OPTIONS ---------- */
+
   .donut-options {
-    gap: 8px;
+    width: 100%;
+
+    display: flex;
     justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .thumb-btn {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+  }
+
+  .thumb-btn img {
+    width: 32px;
+    height: 32px;
+
+    object-fit: contain;
+  }
+
+
+  /* ---------- SLIDER ---------- */
+
+  .slider-indicator {
+    width: 35px;
+    height: 5px;
+
+    margin-top: 10px;
+  }
+}
+
+
+/* ==========================================
+   SMALL PHONES
+   ========================================== */
+
+@media screen and (max-width: 430px) {
+
+  header {
+    padding: 10px 5px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    padding: 5px 4px;
+  }
+
+  .hero-left {
+    padding-top: 10px;
+  }
+
+  #main-donut-img {
+    width: 230px;
+    height: 230px;
+    max-width: 70vw;
+    max-height: 70vw;
+  }
+
+  .hero-right {
+    padding: 10px 20px 25px;
+  }
+
+  .hero-right h1 {
+    font-size: 25px;
+  }
+
+  .hero-right p {
+    font-size: 12px;
+    line-height: 18px;
   }
 
   .thumb-btn {
@@ -1498,12 +1615,34 @@ p {
   }
 
   .thumb-btn img {
-    width: 28px;
-    height: 28px;
+    width: 29px;
+    height: 29px;
+  }
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+   ========================================== */
+
+@media screen and (max-width: 360px) {
+
+  .nav-links a {
+    font-size: 11px;
+    padding: 4px 2px;
   }
 
-  .slider-indicator {
-    width: 24px;
-    height: 5px;
+  #main-donut-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-right h1 {
+    font-size: 23px;
+  }
+
+  .hero-right {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
